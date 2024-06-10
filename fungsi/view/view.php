@@ -1,7 +1,5 @@
 <?php
-/*
-* PROSES TAMPIL
-*/
+
 class view
 {
     protected $db;

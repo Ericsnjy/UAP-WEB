@@ -115,10 +115,27 @@ $hasil_profil = $lihat->member_edit($id);
                             Profile
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php">
+                        <a class="dropdown-item" href="#" onclick="confirmLogout()">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
+                        <script>
+                            function confirmLogout() {
+                                Swal.fire({
+                                    title: 'Apakah anda yakin ingin keluar?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, keluar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.href = 'logout.php';
+                                    }
+                                })
+                            }
+                        </script>
+
                     </div>
                 </li>
             </ul>

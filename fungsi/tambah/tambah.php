@@ -3,8 +3,9 @@
 session_start();
 if (!empty($_SESSION['admin'])) {
     require '../../config.php';
+    
     if (!empty($_GET['kategori'])) {
-        $nama= htmlentities(htmlentities($_POST['kategori']));
+        $nama= htmlentities($_POST['kategori']);
         $tgl= date("j F Y, G:i");
         $data[] = $nama;
         $data[] = $tgl;
@@ -35,7 +36,7 @@ if (!empty($_SESSION['admin'])) {
         $data[] = $stok;
         $data[] = $tgl;
         $sql = 'INSERT INTO barang (id_barang,id_kategori,nama_barang,merk,harga_beli,harga_jual,satuan_barang,stok,tgl_input) 
-			    VALUES (?,?,?,?,?,?,?,?,?) ';
+                VALUES (?,?,?,?,?,?,?,?,?) ';
         $row = $config -> prepare($sql);
         $row -> execute($data);
         echo '<script>window.location="../../index.php?page=barang&success=tambah-data"</script>';
@@ -69,7 +70,29 @@ if (!empty($_SESSION['admin'])) {
             echo '<script>window.location="../../index.php?page=jual&success=tambah-data"</script>';
         } else {
             echo '<script>alert("Stok Barang Anda Telah Habis !");
-					window.location="../../index.php?page=jual#keranjang"</script>';
+                    window.location="../../index.php?page=jual#keranjang"</script>';
         }
     }
+
+    // Add member functionality
+    if (!empty($_GET['pelanggan'])) {
+        $nama = htmlentities($_POST['nama']);
+        $password = htmlentities($_POST['password']);
+        $alamat = htmlentities($_POST['alamat']);
+        $telpon = htmlentities($_POST['telpon']);
+        $email = htmlentities($_POST['email']);
+        $tgl = date("j F Y, G:i");
+
+        $data[] = $nama;
+        $data[] = $password;
+        $data[] = $alamat;
+        $data[] = $telpon;
+        $data[] = $email;
+        $data[] = $tgl;
+        $sql = 'INSERT INTO member (nama, password, alamat, telpon, email, tgl_input) VALUES (?, ?, ?, ?, ?, ?)';
+        $row = $config -> prepare($sql);
+        $row -> execute($data);
+        echo '<script>window.location="../../index.php?page=member&success=tambah-data"</script>';
+    }
 }
+?>

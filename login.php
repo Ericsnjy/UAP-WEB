@@ -128,10 +128,10 @@ if (isset($_POST['proses'])) {
                         </div>
                         <form class="form-login" method="POST">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" name="user" placeholder="User ID" autofocus>
+                                <input type="text" class="form-control form-control-user" name="user" placeholder="User ID" autofocus required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" name="pass" placeholder="Password">
+                                <input type="password" class="form-control form-control-user" name="pass" placeholder="Password" required>
                             </div>
                             <button class="btn btn-primary btn-block" name="proses" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
                         </form>

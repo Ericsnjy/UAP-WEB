@@ -114,7 +114,7 @@ if (isset($_POST['proses'])) {
         <!-- Welcome Section -->
         <div class="welcome-section">
             <h1>Selamat Datang, Toko AHAY</h1>
-            <img src="foto.png" alt="Welcome Image"> <!-- Ganti path_to_image.jpg dengan path gambar yang diinginkan -->
+            <img src="assets/img/lapopp.png" alt="Welcome Image"> <!-- Ganti path_to_image.jpg dengan path gambar yang diinginkan -->
         </div>
 
         <!-- Login Section -->

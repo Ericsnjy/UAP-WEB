@@ -54,7 +54,7 @@
 					</div>
 					<div class="clearfix"></div>
 					<center>
-						<p>Terima Kasih Telah berbelanja di toko kami !</p>
+						<p>Terima Kasih Telah berbelanja di toko kami ! Datang Kembali !</p>
 					</center>
 				</div>
 				<div class="col-sm-4"></div>

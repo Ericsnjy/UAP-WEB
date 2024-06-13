@@ -15,9 +15,9 @@
 <button type="button" class="btn btn-primary btn-md mr-2" data-toggle="modal" data-target="#myModal">
     <i class="fa fa-plus"></i> Insert Data</button>
 <a href="index.php?page=member" class="btn btn-success btn-md">
-    <i class="fa fa-refresh"></i> Refresh Data</a>
+    <i class="fa fa-refresh"></i>Refresh Data</a>
 <div class="clearfix"></div>
-<br />
+<br/>
 
 <!-- View pelanggan -->
 <div class="card card-body">

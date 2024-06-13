@@ -1,20 +1,20 @@
 <h4>Data Pelanggan</h4>
 <br />
-<?php if(isset($_GET['success'])){?>
-<div class="alert alert-success">
-    <p>Tambah Data Berhasil !</p>
-</div>
-<?php }?>
-<?php if(isset($_GET['remove'])){?>
-<div class="alert alert-danger">
-    <p>Hapus Data Berhasil !</p>
-</div>
-<?php }?>
+<?php if (isset($_GET['success'])) { ?>
+    <div class="alert alert-success">
+        <p>Tambah Data Berhasil !</p>
+    </div>
+<?php } ?>
+<?php if (isset($_GET['remove'])) { ?>
+    <div class="alert alert-danger">
+        <p>Hapus Data Berhasil !</p>
+    </div>
+<?php } ?>
 
 <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-primary btn-md mr-2" data-toggle="modal" data-target="#myModal">
     <i class="fa fa-plus"></i> Insert Data</button>
-<a href="index.php?page=pelanggan" class="btn btn-success btn-md">
+<a href="index.php?page=member" class="btn btn-success btn-md">
     <i class="fa fa-refresh"></i> Refresh Data</a>
 <div class="clearfix"></div>
 <br />
@@ -35,26 +35,30 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                $no=1;
-                $hasil = $lihat->pelanggan(); // Assume this method fetches the pelanggan data
-                foreach($hasil as $isi) {
-                ?>
-                <tr>
-                    <td><?php echo $no;?></td>
-                    <td><?php echo $isi['nama'];?></td>
-                    <td><?php echo $isi['password'];?></td>
-                    <td><?php echo $isi['alamat'];?></td>
-                    <td><?php echo $isi['telpon'];?></td>
-                    <td><?php echo $isi['email'];?></td>
-                    <td>
-                        <a href="index.php?page=pelanggan/details&pelanggan=<?php echo $isi['id_pelanggan'];?>"><button class="btn btn-primary btn-xs">Details</button></a>
-                        <a href="index.php?page=pelanggan/edit&pelanggan=<?php echo $isi['id_pelanggan'];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
-                        <a href="fungsi/hapus/hapus.php?pelanggan=hapus&id=<?php echo $isi['id_pelanggan'];?>" onclick="javascript:return confirm('Hapus Data pelanggan ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
-                    </td>
-                </tr>
-                <?php 
-                $no++; 
+                <?php
+                $no = 1;
+                $hasil = $lihat->member(); // Assume this method fetches the pelanggan data
+                foreach ($hasil as $isi) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no;['id_member'] ?></td>
+                        <td><?php echo $isi['nm_member']; ?></td>
+                        <td><?php echo $isi['password']; ?></td>
+                        <td><?php echo $isi['alamat_member']; ?></td>
+                        <td><?php echo $isi['telepon']; ?></td>
+                        <td><?php echo $isi['email']; ?></td>
+                        <td>
+                            <a href="index.php?page=member/details&member=<?php echo $isi['id_member']; ?>"><button
+                                    class="btn btn-primary btn-xs">Details</button></a>
+                            <a href="index.php?page=member/edit&member=<?php echo $isi['id_member']; ?>"><button
+                                    class="btn btn-warning btn-xs">Edit</button></a>
+                            <a href="fungsi/hapus/hapus.php?member=hapus&id=<?php echo $isi['id_member']; ?>"
+                                onclick="javascript:return confirm('Hapus Data pelanggan ?');"><button
+                                    class="btn btn-danger btn-xs">Hapus</button></a>
+                        </td>
+                    </tr>
+                    <?php
+                    $no++;
                 }
                 ?>
             </tbody>
@@ -73,15 +77,16 @@
                 <h5 class="modal-title"><i class="fa fa-plus"></i> Tambah Pelanggan</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <form action="module/pelanggan/tambah/index.php?pelanggan=tambah" method="POST">
+            <form action="index.php?page=member&success=tambah-data" method="POST">
                 <div class="modal-body">
                     <table class="table table-striped bordered">
                         <?php
-                        $format = $lihat->pelanggan_id(); // Assume this method generates a new pelanggan ID
+                        $format = $lihat->member(); // Assume this method generates a new pelanggan ID
                         ?>
                         <tr>
                             <td>ID Pelanggan</td>
-                            <td><input type="text" readonly="readonly" required value="<?php echo $format;?>" class="form-control" name="id"></td>
+                            <td><input type="text" readonly="readonly" required value="<?php echo $format; ?>"
+                                    class="form-control" name="id"></td>
                         </tr>
                         <tr>
                             <td>Nama</td>
@@ -89,15 +94,18 @@
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><input type="password" placeholder="Password" required class="form-control" name="password"></td>
+                            <td><input type="password" placeholder="Password" required class="form-control"
+                                    name="password"></td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
-                            <td><input type="text" placeholder="Alamat" required class="form-control" name="alamat"></td>
+                            <td><input type="text" placeholder="Alamat" required class="form-control" name="alamat">
+                            </td>
                         </tr>
                         <tr>
                             <td>Telpon</td>
-                            <td><input type="text" placeholder="Telpon" required class="form-control" name="telpon"></td>
+                            <td><input type="text" placeholder="Telpon" required class="form-control" name="telpon">
+                            </td>
                         </tr>
                         <tr>
                             <td>Email</td>
@@ -105,7 +113,8 @@
                         </tr>
                         <tr>
                             <td>Tanggal Input</td>
-                            <td><input type="text" required readonly="readonly" class="form-control" value="<?php echo date("j F Y, G:i");?>" name="tgl"></td>
+                            <td><input type="text" required readonly="readonly" class="form-control"
+                                    value="<?php echo date("j F Y, G:i"); ?>" name="tgl"></td>
                         </tr>
                     </table>
                 </div>

@@ -1,5 +1,5 @@
 <?php 
-    $id = $_GET['pelanggan'];
+    $id = $_GET['member'];
     $hasil = $lihat -> member_edit($id); // Assume this method fetches the member details by ID
 ?>
 <a href="index.php?page=member" class="btn btn-primary mb-3"><i class="fa fa-angle-left"></i> Balik </a>
@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <td>Nama</td>
-                <td><?php echo $hasil['nama'];?></td>
+                <td><?php echo $hasil['nm_member'];?></td>
             </tr>
             <tr>
                 <td>Password</td>
@@ -31,11 +31,11 @@
             </tr>
             <tr>
                 <td>Alamat</td>
-                <td><?php echo $hasil['alamat'];?></td>
+                <td><?php echo $hasil['alamat_member'];?></td>
             </tr>
             <tr>
                 <td>Telpon</td>
-                <td><?php echo $hasil['telpon'];?></td>
+                <td><?php echo $hasil['telepon'];?></td>
             </tr>
             <tr>
                 <td>Email</td>

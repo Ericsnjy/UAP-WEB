@@ -3,15 +3,15 @@
 session_start();
 if (!empty($_SESSION['admin'])) {
     require '../../config.php';
-    
+
     if (!empty($_GET['kategori'])) {
-        $nama= htmlentities($_POST['kategori']);
-        $tgl= date("j F Y, G:i");
+        $nama = htmlentities($_POST['kategori']);
+        $tgl = date("j F Y, G:i");
         $data[] = $nama;
         $data[] = $tgl;
         $sql = 'INSERT INTO kategori (nama_kategori,tgl_input) VALUES(?,?)';
-        $row = $config -> prepare($sql);
-        $row -> execute($data);
+        $row = $config->prepare($sql);
+        $row->execute($data);
         echo '<script>window.location="../../index.php?page=kategori&&success=tambah-data"</script>';
     }
 
@@ -37,11 +37,11 @@ if (!empty($_SESSION['admin'])) {
         $data[] = $tgl;
         $sql = 'INSERT INTO barang (id_barang,id_kategori,nama_barang,merk,harga_beli,harga_jual,satuan_barang,stok,tgl_input) 
                 VALUES (?,?,?,?,?,?,?,?,?) ';
-        $row = $config -> prepare($sql);
-        $row -> execute($data);
+        $row = $config->prepare($sql);
+        $row->execute($data);
         echo '<script>window.location="../../index.php?page=barang&success=tambah-data"</script>';
     }
-    
+
     if (!empty($_GET['jual'])) {
         $id = $_GET['id'];
 
@@ -52,7 +52,7 @@ if (!empty($_SESSION['admin'])) {
         $hsl = $row->fetch();
 
         if ($hsl['stok'] > 0) {
-            $kasir =  $_GET['id_kasir'];
+            $kasir = $_GET['id_kasir'];
             $jumlah = 1;
             $total = $hsl['harga_jual'];
             $tgl = date("j F Y, G:i");
@@ -64,8 +64,8 @@ if (!empty($_SESSION['admin'])) {
             $data1[] = $tgl;
 
             $sql1 = 'INSERT INTO penjualan (id_barang,id_member,jumlah,total,tanggal_input) VALUES (?,?,?,?,?)';
-            $row1 = $config -> prepare($sql1);
-            $row1 -> execute($data1);
+            $row1 = $config->prepare($sql1);
+            $row1->execute($data1);
 
             echo '<script>window.location="../../index.php?page=jual&success=tambah-data"</script>';
         } else {
@@ -75,7 +75,7 @@ if (!empty($_SESSION['admin'])) {
     }
 
     // Add member functionality
-    if (!empty($_GET['pelanggan'])) {
+    if (!empty($_GET['member'])) {
         $nama = htmlentities($_POST['nama']);
         $password = htmlentities($_POST['password']);
         $alamat = htmlentities($_POST['alamat']);
@@ -88,10 +88,13 @@ if (!empty($_SESSION['admin'])) {
         $data[] = $alamat;
         $data[] = $telpon;
         $data[] = $email;
-        $data[] = $tgl;
-        $sql = 'INSERT INTO member (nama, password, alamat, telpon, email, tgl_input) VALUES (?, ?, ?, ?, ?, ?)';
-        $row = $config -> prepare($sql);
-        $row -> execute($data);
+        // $data[] = $tgl;
+
+        var_dump($data);
+
+        $sql = 'INSERT INTO member (nm_member, password, alamat_member, telepon, email) VALUES (?, ?, ?, ?, ?)';
+        $row = $config->prepare($sql);
+        $row->execute($data);
         echo '<script>window.location="../../index.php?page=member&success=tambah-data"</script>';
     }
 }
